@@ -18,6 +18,7 @@ import java.io.IOException;
 public class ConfigurationManager {
     private static ConfigurationManager myConfigurationManager;
     private static Configuration myCurrentConfiguration;
+
     private ConfigurationManager() {
 
     }
@@ -72,5 +73,6 @@ if(myCurrentConfiguration==null){
 }
 return myCurrentConfiguration;
     }
+
 }
 
