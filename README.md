@@ -28,6 +28,7 @@ completed and then server closes the connections.
 ## Dependencies
 
 - Added Jackson packages to map json to pojo.
+- Added SLF4J API and logback for logging.
 
 ## Configuration
 
@@ -47,4 +48,6 @@ Need to open sockets to serve pages using the TCP connection/protocol.
 - Multithreaded to accept multiple connections.
 - Response contains a `CRLF` - Carriage Return line feed.
 - CRLF signifies end of a line. represented as `\r\n`.
-- 
+- Using Multi-threading, we can open multiple sockets.
+- `ServerListenerThread` accepts connections and continues to only accept connection.
+- `HttpConnectionWorkerThread` handles taking care of the requests/messages.
