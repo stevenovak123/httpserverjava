@@ -29,6 +29,7 @@ completed and then server closes the connections.
 
 - Added Jackson packages to map json to pojo.
 - Added SLF4J API and logback for logging.
+- Junit jupiter to test the parser.
 
 ## Configuration
 
@@ -51,3 +52,11 @@ Need to open sockets to serve pages using the TCP connection/protocol.
 - Using Multi-threading, we can open multiple sockets.
 - `ServerListenerThread` accepts connections and continues to only accept connection.
 - `HttpConnectionWorkerThread` handles taking care of the requests/messages.
+
+## Parsers
+- There are two types of parsers. Lexer and Lexerless
+- Lexers scan the request with a tokenizer and then parse the request. 
+- The Stream is first converted to tokens then converted to the request.
+- Lexerless parser take the data as it comes and parses straight-away.
+- It helps detect error sooner and can be instantly dropped.
+- Built out a JUnit case. To test whether parser will work correctly or not. 
