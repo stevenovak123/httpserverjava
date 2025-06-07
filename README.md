@@ -1,22 +1,23 @@
 # HTTP Server built in java
 
-building this as practice to learn Computer science concepts. File handiling, networking etc.
+building this as practice to learn Computer science concepts. File handiling, networking, multithreading etc.
 Following a few YouTube videos and [RFC 7230](https://datatracker.ietf.org/doc/html/rfc7230#autoid-16),[RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231#autoid-27),[RFC 7232](https://datatracker.ietf.org/doc/html/rfc7232) 
-
+For now only working to accept HTTP/1.1. 
+Below is my learnings / log of what I am doing.
 ---
 
 ## How does http server work
 
 Http server is basically a computer that needs to be connected to a network. On this network the server needs to be
-listening to at least one port.
+listening to at least one port. We can make it listen to any port we like but these are the usual ports that are used for traffic. Client and server
+need to establish connection before sending and accepting request.
+Once connection is established then requests are processed and then sent back to the client; then the request is
+completed and then server closes the connections.
 
 - Encrypted and unencrypted requests.
 - Unencrypted at port 80 and encrypted at port 443.
 
-We can make it listen to any port we like but these are the usual ports that are used for traffic. Client and server
-need to establish connection before sending and accepting request.
-Once connection is established then requests are processed and then sent back to the client; then the request is
-completed and then server closes the connections.
+
 ---
 ## What do I need to do?
 
