@@ -1,6 +1,8 @@
 package com.steve.core;
 
 
+import com.steve.io.WebRootHandler;
+import com.steve.io.WebRootNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,9 +19,12 @@ public class ServerListenerThread extends Thread {
     private String webroot;
     private ServerSocket serverSocket;
 
-    public ServerListenerThread(int port, String webroot) throws IOException {
+    private WebRootHandler webRootHandler;
+
+    public ServerListenerThread(int port, String webroot) throws IOException, WebRootNotFoundException {
         this.webroot = webroot;
         this.port = port;
+        this.webRootHandler = new WebRootHandler(webroot);
         this.serverSocket = new ServerSocket(this.port);
     }
 
@@ -32,7 +37,7 @@ public class ServerListenerThread extends Thread {
                 logger.info("Connection accepted" + socket.getInetAddress());
 
 //                Create a HTTPConnectionWorkerThread
-                HttpConnectionWorkerThread workerThread = new HttpConnectionWorkerThread(socket);
+                HttpConnectionWorkerThread workerThread = new HttpConnectionWorkerThread(socket,webRootHandler);
                 workerThread.start();
             }
         } catch (IOException e) {

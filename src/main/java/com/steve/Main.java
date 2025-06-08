@@ -3,6 +3,7 @@ package com.steve;
 import com.steve.config.Configuration;
 import com.steve.config.ConfigurationManager;
 import com.steve.core.ServerListenerThread;
+import com.steve.io.WebRootNotFoundException;
 import com.sun.net.httpserver.HttpServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,8 +28,8 @@ public class Main {
         try {
             ServerListenerThread serverListenerThread = new ServerListenerThread(configuration.getPort(), configuration.getWebroot());
             serverListenerThread.start();
-        } catch (IOException e) {
-            e.printStackTrace();
+        }  catch (WebRootNotFoundException | IOException e) {
+            logger.error("WebrootNot Found", e);
         }
     }
 }
